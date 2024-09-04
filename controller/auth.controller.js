@@ -36,7 +36,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
         message: "Login Success", result: {
             _id: result._id,
             email: result.email,
-            name: result.namet
+            name: result.name
         }
     })
 })
