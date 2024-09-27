@@ -10,6 +10,7 @@ const app = express()
 
 //middleware
 app.use(express.json())
+app.use(express.static("dist"))
 app.use(cookieParser())
 app.use(cors({
     origin: "http://localhost:5173",
@@ -22,7 +23,8 @@ app.use("/api/public", require('./routes/public.routes'))
 
 
 app.use("*", (req, res) => {
-    res.status(404).json({ message: "Resource Not Found" })
+    // res.status(404).json({ message: "Resource Not Found" })
+    res.sendFile(path.join(__dirname, "dist", "index.html"))
 })
 app.use((err, req, res, next) => {
     console.log(err);
