@@ -4,6 +4,7 @@ const cors = require("cors")
 const cookieParser = require("cookie-parser")
 require("dotenv").config({ path: "./.env" })
 const path = require("path")
+const { adminProtected } = require("./middlewares/protected")
 
 const app = express()
 
@@ -15,7 +16,9 @@ app.use(cors({
 
     credentials: true
 }))
+app.use("/api/admin", adminProtected, require('./routes/admin.routes'))
 app.use("/api/auth", require('./routes/auth.routes'))
+app.use("/api/public", require('./routes/public.routes'))
 
 
 app.use("*", (req, res) => {
@@ -28,5 +31,5 @@ app.use((err, req, res, next) => {
 mongoose.connect(process.env.MONGO_URL)
 mongoose.connection.once("open", () => {
     console.log("MONGOOSE CONNECTED")
-    app.listen(process.env.PORT, console.log("Server Runing : http://localhost:5000"))
+    app.listen(process.env.PORT, console.log("Server Runnning`"))
 })
