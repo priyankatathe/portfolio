@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(express.static("dist"))
 app.use(cookieParser())
 app.use(cors({
-    origin: process.env.NODE_ENV === "production"
+    origin: process.env.NODE_ENV === "devepoment"
         ? "http://localhost:5173"
         : "https://portfolio-noq2.onrender.com",
     credentials: true
