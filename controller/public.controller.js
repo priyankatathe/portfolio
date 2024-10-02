@@ -8,8 +8,8 @@ const { checkEmpty } = require("../utils/checkEmpty")
 const Enquiry = require("../model/Enquiry")
 
 
-exports.getCarousel = asyncHandler(async (req, res) => {
-    const result = await Carousel.find()
+exports.getProject = asyncHandler(async (req, res) => {
+    const result = await Projects.find()
     res.status(200).json({ message: "carousel fetch success", result })
 })
 
