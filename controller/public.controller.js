@@ -6,10 +6,11 @@ const Validator = require("validator")
 const Projects = require("../model/Projects")
 const { checkEmpty } = require("../utils/checkEmpty")
 const Enquiry = require("../model/Enquiry")
+const Carousel = require("../model/Carousel")
 
 
-exports.getProject = asyncHandler(async (req, res) => {
-    const result = await Projects.find()
+exports.getCarousel = asyncHandler(async (req, res) => {
+    const result = await Carousel.find()
     res.status(200).json({ message: "carousel fetch success", result })
 })
 
